@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react"; /* the {useState} is called a hook and it is a useful property that's gonna be used further*/
 
 export default function TextForm(props) {
+  const [showPassword, setShowPassword] = useState(false);
   const submit = (event) => {
     event.preventDefault();
     console.log("Form submitted with ");
@@ -28,7 +29,8 @@ export default function TextForm(props) {
               className="form-control"
               id="exampleInputEmail1"
               /* value= {text}*/ aria-describedby="emailHelp"
-              placeholder={props.email}
+              placeholder={props.email} 
+              style={{ backgroundColor: `${props.mode === 'light' ? 'white' : 'grey'}`, color: `${'dark' ? 'black' : 'grey'}` }}
             />
             <div id="emailHelp" className="form-text">
               We'll never share your details with anyone else.
@@ -39,10 +41,10 @@ export default function TextForm(props) {
               Password
             </label>
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               className="form-control"
               id="exampleInputPassword1"
-              placeholder={props.password}
+              placeholder={props.password} style={{ backgroundColor: `${props.mode === 'light' ? 'white' : 'grey'}`, color: `${'dark' ? 'black' : 'grey'}` }}
             />
           </div>
           <div className="mb-3 form-check">
@@ -50,6 +52,7 @@ export default function TextForm(props) {
               type="checkbox"
               className="form-check-input"
               id="exampleCheck1"
+              onChange={() => setShowPassword(!showPassword)}
             />
             <label className="form-check-label" htmlFor="exampleCheck1">
               show password
@@ -60,13 +63,14 @@ export default function TextForm(props) {
           </button>
         </form>
         <div className="mb-3 my-5">
-          <textarea
-            className="form-control"
-            value={text}
-            onChange={handleOnChange}
-            id="myBox"
-            rows="8"
-          ></textarea>
+        <textarea
+          className="form-control"
+          value={text}
+          onChange={handleOnChange}
+          id="myBox"
+          rows="8"
+          style={{ backgroundColor: `${props.mode === 'light' ? 'white' : 'grey'}`, color: `${'dark' ? 'black' : 'grey'}` }}
+        ></textarea>
         </div>
         <button
           className="btn btn-primary mx-2"
@@ -104,9 +108,3 @@ export default function TextForm(props) {
     </>
   );
 }
-
-// TextForm.defaultProps = {
-//   title: 'Default Form Title',
-//   email: 'Example@gmail.com',
-//   password: 'password123',
-// }

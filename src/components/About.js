@@ -4,7 +4,7 @@ export default function About() {
   //Add code
   const [myStyle, setMyStyle] = useState({
     color: "white",
-    backgroundColor: "black",
+    backgroundColor: "grey",
   });
 
   const [btnText, setBtnText] = useState("Enable Dark mode");
@@ -17,7 +17,7 @@ export default function About() {
       setTimeout(() => {
         setMyStyle({
           color: "white",
-          backgroundColor: "black",
+          backgroundColor: "grey",
         });
         setBtnText("Enable Light mode");
         setBtnColor({
@@ -34,7 +34,7 @@ export default function About() {
         setBtnText("Enable Dark mode");
         setBtnColor({
           color: "white",
-          backgroundColor: "black",
+          backgroundColor: "grey",
         });
       }, 150);
     }

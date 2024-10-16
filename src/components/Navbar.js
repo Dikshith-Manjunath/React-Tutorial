@@ -2,12 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 
 export default function Navbar(props) {
-  {
-    /* props are read only and are not to be changed inside the function  */
-  }
   return (
     <>
-      <nav className={`navbar navbar-expand-lg navbar-${props.dark} bg-${props.dark} `}>
+      <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode} `}>
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
             {props.title}
@@ -36,7 +33,7 @@ export default function Navbar(props) {
                 </a>
               </li>
             </ul>
-            <div className="form-check form-switch mx-4">
+            <div className={`form-check form-switch text-${props.mode === 'light'?'dark':'light'} mx-4`}>
             <input className="form-check-input" type="checkbox" role="switch" onClick={props.toggleMode} id="flexSwitchCheckDefault" />
             <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Dark/Light Mode</label>
             </div>

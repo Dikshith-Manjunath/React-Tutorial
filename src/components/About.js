@@ -6,7 +6,6 @@ export default function About() {
     color: "white",
     backgroundColor: "grey",
   });
-
   const [btnText, setBtnText] = useState("Enable Dark mode");
   const [btnColor, setBtnColor] = useState({
     color: "black",

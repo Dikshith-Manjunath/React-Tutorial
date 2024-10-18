@@ -1,6 +1,7 @@
 import "./App.css";
+import React, { useState } from 'react'
 import {Routes ,Route} from 'react-router-dom'
-import About from "./components/About";
+// import About from "./components/About";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
 import Submit from "./components/Submit";
@@ -10,8 +11,8 @@ import Users from "./components/Users";
 import UserDetails from "./components/UserDetails";
 import FeaturedProducts from "./components/FeaturedProducts";
 import SearchedProducts from "./components/SearchedProducts";
-import React, { useState } from 'react'
 import Admin from "./components/Admin";
+const LazyAbout = React.lazy(() => import("./components/About"))
 
 
 function App() {
@@ -55,11 +56,11 @@ function App() {
       {/* <Alert alert={alert}/> */}
         <Routes>
           <Route path="/" element= {<div className="container my-3"><TextForm title="Enter your email:" email="Example@gmail.com" password="Password@123" mode={mode} /></div>}/>
-          <Route path="about" element= {<About />}/>
+          <Route path="about" element= {<React.Suspense fallback='loading...'><LazyAbout /></React.Suspense>}/> {/* This is the Lazy Link syntax that works well with React */}
           <Route path="submit" element= {<Submit />}/>
           <Route path="products" element= {<Products />}>
-            <Route path="featured" element= {<FeaturedProducts/>}/>
-            <Route path="new" element= {<SearchedProducts/>}/>
+            <Route path="featured" element= {<FeaturedProducts/>}/>     {/*These are called Relative Links and don't need the backslash to work */}
+            <Route path="new" element= {<SearchedProducts/>}/>          {/*These are called Relative Links and don't need the backslash to work */}
           </Route>
           <Route path="users" element= {<Users />}>
             <Route path=":userId" element= {<UserDetails />}/>

@@ -10,9 +10,9 @@ export default function Users() {
         <h2>users2</h2>
         <h2>users3</h2>
         <Outlet/>
-        <div class="d-grid gap-2 d-md-block">
-            <button class="btn btn-primary mx-2" type="button" onClick={() => setSearchParams({filter: 'active'})}>Active Users</button>
-            <button class="btn btn-primary" type="button" onClick={() => setSearchParams({})}>Reset Filter</button>
+        <div className="d-grid gap-2 d-md-block">
+            <button className="btn btn-primary mx-2" type="button" onClick={() => setSearchParams({filter: 'active'})}>Active Users</button>
+            <button className="btn btn-primary" type="button" onClick={() => setSearchParams({})}>Reset Filter</button>
         </div>
         {
             showActiveUsers ? (<h2 className='mx-3 my-3'>Showing Active Users</h2>):(<h2 className='mx-3 my-3'>Showing All Users</h2>)

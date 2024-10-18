@@ -12,7 +12,7 @@ export default function Products() {
           <input className="form-control me-2 my-3" type="search" placeholder="Search" aria-label="Search" />
             {/* Use relative navigation */}
             <nav className="container d-flex flex-row">
-              <button className="btn btn-outline-info my-3" onClick={() => { navigate('new'); }} type="button">
+              <button className="btn btn-outline-info my-3" onClick={() => { navigate('new'); }} type="button"> {/*This is a relative link and doesn't need a backslash for working */}
                 New
               </button>
               <button className="btn btn-outline-info my-3 mx-2" onClick={() => { navigate('featured'); }} type="button">

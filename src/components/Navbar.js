@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom";
 
 
 export default function Navbar(props) {
-
   const navLinkStyle = ({isActive}) => {
     return{
       color: isActive ? '#31363F' : 'grey'
@@ -45,12 +44,18 @@ export default function Navbar(props) {
                 </NavLink>
               </li>
               <li className="nav-item">
+                <NavLink className="nav-link" to="users" style={navLinkStyle}>
+                  Users
+                </NavLink>
               </li>
             </ul>
             <div className={`form-check form-switch text-${props.mode === 'light'?'dark':'light'} mx-4`}>
             <input className="form-check-input" type="checkbox" role="switch" onClick={props.toggleMode} id="flexSwitchCheckDefault" />
             <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Dark/Light Mode</label>
             </div>
+              <button className={props.color} type="submit" >
+                Sign In
+              </button>
             <form className="d-flex" role="search">
               <input
                 className="form-control me-2"
@@ -58,7 +63,7 @@ export default function Navbar(props) {
                 placeholder="Search"
                 aria-label="Search"
               />
-              <button className="btn btn-outline-success" type="submit" >
+              <button className="btn btn-success" type="submit" >
                 Search
               </button>
             </form>

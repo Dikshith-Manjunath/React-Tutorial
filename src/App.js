@@ -1,9 +1,17 @@
 import "./App.css";
+import {Routes ,Route} from 'react-router-dom'
 import About from "./components/About";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
+import Submit from "./components/Submit";
+import NoMatch from "./components/NoMatch";
+import Products from "./components/Products";
+import FeaturedProducts from "./components/FeaturedProducts";
+import SearchedProducts from "./components/SearchedProducts";
 import React, { useState } from 'react'
 import Alert from './components/Alert'
+
+
 function App() {
   const [alert, setAlert] = useState(null)
   const showAlert = (message,type) => {
@@ -31,12 +39,18 @@ function App() {
   }
   return (
     <>
-          <Navbar title="Tutorial-1" aboutText="About Tutorials" mode={mode} toggleMode={toggleMode} />
-         <Alert alert={alert}/>
-        <div className="container my-3">
-          <TextForm title="Enter your email:" email="Example@gmail.com" password="Password@123" mode={mode} />
-        </div>
-          <About />
+      <Navbar title="Tutorial-1" aboutText="About Tutorials" mode={mode} toggleMode={toggleMode} />
+      <Alert alert={alert}/>
+        <Routes>
+          <Route path="/" element= {<div className="container my-3"><TextForm title="Enter your email:" email="Example@gmail.com" password="Password@123" mode={mode} /></div>}/>
+          <Route path="about" element= {<About />}/>
+          <Route path="submit" element= {<Submit />}/>
+          <Route path="products" element= {<Products />}>
+            <Route path="featured" element= {<FeaturedProducts/>}/>
+            <Route path="new" element= {<SearchedProducts/>}/>
+          </Route>
+          <Route path="*" element={<NoMatch />}/>      
+        </Routes>
     </>
   );
 }

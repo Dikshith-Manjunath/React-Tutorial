@@ -1,24 +1,19 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom'
 import { useState } from "react"; /* the {useState} is called a hook and it is a useful property that's gonna be used further*/
-
 export default function TextForm(props) {
   const [showPassword, setShowPassword] = useState(false);
-  const submit = (event) => {
-    event.preventDefault();
-    console.log("Form submitted with ");
-  };
   const handleOnChange = (event) => {
     event.preventDefault();
     console.log("The Data has been changed");
     setText(event.target.value);
   };
-
-  const [text, setText] =
-    useState(""); /* Hooks are like classes without the use of actual classes */
+  const navigate = useNavigate();
+  const [text, setText] = useState(""); /* Hooks are like classes without the use of actual classes */
   return (
     <>
       <div className="container">
-        <form>
+        <form className="d-flex flex-column justify-content-center align-items-center" style={{width:'77vw'}}>
           <h1>{props.title}</h1>
           <div className="mb-3">
             <label htmlFor="exampleInputEmail1" className="form-label">
@@ -58,7 +53,7 @@ export default function TextForm(props) {
               show password
             </label>
           </div>
-          <button type="submit" className="btn btn-primary" onClick={submit}>
+          <button type="submit" className="btn btn-primary" onClick={() => {navigate('Submit')}}>
             Submit
           </button>
         </form>

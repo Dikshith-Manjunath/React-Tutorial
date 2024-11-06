@@ -68,7 +68,8 @@ export default function TextForm(props) {
         ></textarea>
         </div>
         <button
-          className="btn btn-primary mx-2"
+          disabled={text.length===0}
+          className="btn btn-primary mx-2 my-2"
           onClick={() => {
             setText(text.toUpperCase());
           }}
@@ -76,7 +77,8 @@ export default function TextForm(props) {
           Change to Uppercase
         </button>
         <button
-          className="btn btn-primary mx-2"
+          disabled={text.length===0}
+          className="btn btn-primary mx-2 my-2"
           onClick={() => {
             setText(text.toLowerCase());
           }}
@@ -84,7 +86,8 @@ export default function TextForm(props) {
           Change to Lowercase
         </button>
         <button
-          className="btn btn-primary mx-2"
+          disabled={text.length===0}
+          className="btn btn-primary mx-2 my-2"
           onClick={() => {
             setText("");
           }}
@@ -95,10 +98,10 @@ export default function TextForm(props) {
       <div className="container my-3">
         <h1>Your Text summary</h1>
         <p>
-          number of words: {text.split(" ").length} and Text Length:{" "}
+          number of words: {text.split(" ").filter((elem)=>{return elem.length!==0}).length} and Text Length:{" "}
           {text.length}
         </p>
-        <p>Time to read (avg in min): {0.008 * text.split(" ").length}</p>
+        <p>Time to read (avg in min): {0.008 * text.split(" ").filter((elem)=>{return elem.length!==0}).length}</p>
       </div>
     </>
   );
